@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
@@ -54,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout(cust -> cust.addLogoutHandler( this::logout ).logoutSuccessHandler( this::onLogoutSuccess ));
         http.addFilterBefore( tokenFilter, UsernamePasswordAuthenticationFilter.class );
     }
+
 
     private void logout(HttpServletRequest request, HttpServletResponse response,
                         Authentication authentication) {

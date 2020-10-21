@@ -23,6 +23,7 @@ public class ProfessorService {
         Professor profExist = this.professorDAO.findById(professor.getId()).orElse(null);
         if (profExist == null) {
             this.professorDAO.insert(professor);
+            return;
         }
     }
 

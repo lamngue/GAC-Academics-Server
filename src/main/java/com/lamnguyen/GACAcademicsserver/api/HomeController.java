@@ -14,15 +14,8 @@ import java.util.Map;
 @RequestMapping( "/v1/home" )
 public class HomeController {
 
-    private final TokenStore tokenStore;
-    Logger logger = LoggerFactory.getLogger(HomeController.class);
-    @Autowired
-    public HomeController(TokenStore tokenStore) {
-        this.tokenStore = tokenStore;
-    }
-
     @GetMapping
-    public Map<String, String> getUserName( @AuthenticationPrincipal( expression = "attributes['name']" ) String username ) {
+    public Map<String, Object> getUserName( @AuthenticationPrincipal( expression = "attributes" ) Object username ) {
         return Collections.singletonMap("name", username);
     }
 }
