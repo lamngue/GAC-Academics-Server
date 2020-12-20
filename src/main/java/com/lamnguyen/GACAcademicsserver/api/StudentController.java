@@ -40,7 +40,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public void updateStudent(@PathVariable("id") String id,@Valid @NotNull @RequestBody Student student) {
+    public void updateStudentClasses(@PathVariable("id") String id,@Valid @NotNull @RequestBody Student student) {
         logger.info("updating student");
         studentService.updateStudent(id, student);
     }

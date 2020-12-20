@@ -2,9 +2,11 @@ package com.lamnguyen.GACAcademicsserver.service;
 
 import com.lamnguyen.GACAcademicsserver.dao.ProfessorDAO;
 import com.lamnguyen.GACAcademicsserver.model.Professor;
+import com.lamnguyen.GACAcademicsserver.model.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +21,13 @@ public class ProfessorService {
     }
 
 
-    public void addProfessor(Professor professor) {
-        Professor profExist = this.professorDAO.findById(professor.getId()).orElse(null);
+    public boolean addProfessor(Professor professor) {
+        Professor profExist = this.professorDAO.findByFullName(professor.getFullName());
         if (profExist == null) {
             this.professorDAO.insert(professor);
-            return;
+            return true;
         }
+        return false;
     }
 
     public List<Professor> getProfessors() {
@@ -39,13 +42,12 @@ public class ProfessorService {
         this.professorDAO.deleteById(id);
     }
 
-    public void updateProfessor(String id, Professor professor) {
+    public void updateProfessor(String id, Rating rating) {
         Professor foundProf = this.professorDAO.findById(id).orElse(null);
         if (foundProf != null) {
-            foundProf.setFullName(professor.getFullName());
-            foundProf.setDepartment(professor.getDepartment());
-            foundProf.setImageLink(professor.getImageLink());
-            foundProf.setRatings(professor.getRatings());
+            ArrayList<Rating> ratings = foundProf.getRatings();
+            ratings.add(rating);
+            foundProf.setRatings(ratings);
             this.professorDAO.save(foundProf);
         }
     }

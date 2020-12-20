@@ -1,6 +1,7 @@
 package com.lamnguyen.GACAcademicsserver.api;
 
 import com.lamnguyen.GACAcademicsserver.model.Professor;
+import com.lamnguyen.GACAcademicsserver.model.Rating;
 import com.lamnguyen.GACAcademicsserver.service.ProfessorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +25,8 @@ public class ProfessorController {
     @PostMapping
     public String addProfessor(@RequestBody Professor professor) {
         logger.info("Adding professor");
-        professorService.addProfessor(professor);
-        return "saved professor with: " + professor.getId();
+        boolean addedProf = professorService.addProfessor(professor);
+        return addedProf ? "saved professor with: " + professor.getId() : "professor " + professor.getFullName() + " already exist.";
     }
 
     @GetMapping
@@ -45,9 +46,9 @@ public class ProfessorController {
     }
 
     @PutMapping(path = "/{id}")
-    public void updateProf(@PathVariable("id") String id, @Valid @NotNull @RequestBody Professor professor) {
+    public void updateRating(@PathVariable("id") String id, @Valid @NotNull @RequestBody Rating rating) {
         logger.info("updating professor");
-        professorService.updateProfessor(id, professor);
+        professorService.updateProfessor(id, rating);
     }
 }
 

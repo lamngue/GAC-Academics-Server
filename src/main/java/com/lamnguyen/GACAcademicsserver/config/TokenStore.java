@@ -13,7 +13,7 @@ import java.util.UUID;
 @Data
 public class TokenStore {
 
-    private final Map< String, Authentication > cache = new HashMap<>();
+    private Map< String, Authentication > cache = new HashMap<>();
     private ArrayList<String> invalidatedTokens = new ArrayList<>();
 
     public String generateToken( Authentication authentication ) {
