@@ -24,4 +24,4 @@ spring:
           google:
             client-id: 367650011816-n2apoktasvh21h2iqa0iojgf7ljh2m73.apps.googleusercontent.com
             client-secret: Q5rPl6pkQU-y0QEElcLugBl5
-            redirectUri: http://localhost:4200/callback
+            redirectUri: https://gusties-academics.online/callback

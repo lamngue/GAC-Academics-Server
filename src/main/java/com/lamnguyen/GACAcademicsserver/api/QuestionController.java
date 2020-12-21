@@ -39,6 +39,11 @@ public class QuestionController {
         return questionService.getQuestion(id).orElse(null);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public void deleteQuestion(@PathVariable("id") String id) {
+        questionService.deleteQuestion(id);
+    }
+
     @PutMapping(path = "/{id}")
     public void addComment(@PathVariable("id") String id, @Valid @NotNull @RequestBody Comment comment) {
         questionService.addComment(id, comment);

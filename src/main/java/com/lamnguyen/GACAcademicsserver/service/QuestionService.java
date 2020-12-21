@@ -36,6 +36,10 @@ public class QuestionService {
         return this.questionDAO.findById(id);
     }
 
+    public void deleteQuestion(String questionId) {
+        this.questionDAO.deleteById(questionId);
+    }
+
     public void addComment(String questionId, Comment comment) {
         Question foundQuestion = this.questionDAO.findById(questionId).orElse(null);
         if (foundQuestion != null) {
