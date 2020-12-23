@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -45,6 +46,21 @@ public class QuestionService {
         if (foundQuestion != null) {
             ArrayList<Comment> comments = foundQuestion.getComments();
             comments.add(comment);
+            foundQuestion.setComments(comments);
+            this.questionDAO.save(foundQuestion);
+        }
+        return;
+    }
+
+    public void editComment(String questionId, Comment modifiedComment) {
+        Question foundQuestion = this.questionDAO.findById(questionId).orElse(null);
+        if (foundQuestion != null) {
+            ArrayList<Comment> comments = foundQuestion.getComments();
+            for (Comment comment : comments) {
+                if (comment.getId().equals(modifiedComment.getId())) {
+                    comment.setContent(modifiedComment.getContent());
+                }
+            }
             foundQuestion.setComments(comments);
             this.questionDAO.save(foundQuestion);
         }

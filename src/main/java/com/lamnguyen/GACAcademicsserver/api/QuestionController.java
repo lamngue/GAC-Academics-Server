@@ -49,6 +49,10 @@ public class QuestionController {
         questionService.addComment(id, comment);
     }
 
+    @PutMapping(path = "/edit-comment/{id}")
+    public void editComment(@PathVariable("id") String id, @Valid @NotNull @RequestBody Comment comment) {
+        questionService.editComment(id, comment);
+    }
     @PutMapping(path = "/delete-comment/{id}")
     public void deleteComment(@PathVariable("id") String qid, @Valid @NotNull @RequestBody String commentId) {
         questionService.deleteComment(qid, commentId);
