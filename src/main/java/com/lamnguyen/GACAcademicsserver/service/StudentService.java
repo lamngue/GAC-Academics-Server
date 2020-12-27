@@ -23,6 +23,7 @@ public class StudentService {
     public Student addStudent(Student student) {
         Student studentExist = this.studentDAO.findById(student.getId()).orElse(null);
         if (studentExist == null) {
+            student.setClassesPlan(new ArrayList<>());
             this.studentDAO.insert(student);
         }
         return student;
@@ -38,6 +39,7 @@ public class StudentService {
     public void updateStudent(String id, Student student) {
         Student foundStudent = this.studentDAO.findById(id).orElse(null);
         if (foundStudent != null) {
+            foundStudent.setStartDate(student.getStartDate());
             foundStudent.setEndDate(student.getEndDate());
             foundStudent.setClassesPlan(student.getClassesPlan());
             this.studentDAO.save(foundStudent);

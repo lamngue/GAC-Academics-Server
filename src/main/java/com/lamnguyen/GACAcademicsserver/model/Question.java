@@ -24,6 +24,7 @@ public class Question {
     @NotBlank
     private String content;
 
+    private ArrayList<Student> likedBy;
     private ArrayList<Comment> comments;
 
     public Question(String dateAdded, String topic, String question, String by, String content, ArrayList<Comment> comments) {

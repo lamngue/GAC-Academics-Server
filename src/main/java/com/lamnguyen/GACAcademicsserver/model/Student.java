@@ -13,14 +13,17 @@ public class Student {
     @Id
     private String id;
     @NotBlank
+    private String name;
+
     private String startDate;
-    @NotBlank
+
     private String endDate;
 
     private ArrayList<Semester> classesPlan;
 
-    public Student(String id, String startDate, String endDate, ArrayList<Semester> classesPlan) {
+    public Student(String id, String name, String startDate, String endDate, ArrayList<Semester> classesPlan) {
         this.id = id;
+        this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.classesPlan = classesPlan;
