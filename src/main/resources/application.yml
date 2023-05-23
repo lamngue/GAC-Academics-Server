@@ -1,5 +1,6 @@
 server:
   forward-headers-strategy: FRAMEWORK
+  port: ${PORT:8080}
 #  port: 8443
 #  ssl:
 #    key-store: classpath:keystore.p12
