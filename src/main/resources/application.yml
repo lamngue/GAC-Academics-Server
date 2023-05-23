@@ -1,20 +1,11 @@
 server:
   forward-headers-strategy: FRAMEWORK
   port: ${PORT:8080}
-#  port: 8443
-#  ssl:
-#    key-store: classpath:keystore.p12
-#    key-store-password: lamd3pz4i
-#    keyStoreType: PKCS12
-#    keyAlias: tomcat
-#security:
-#  require-ssl: true
-
 
 spring:
   data:
     mongodb:
-      uri: ${env.MONGODB_URI}
+      uri: ${MONGODB_URI}
       database: GAC_Academics
 
   security:
@@ -22,6 +13,6 @@ spring:
       client:
         registration:
           google:
-            client-id: ${env.GOOGLE_CLIENT_ID}
-            client-secret: ${env.GOOGLE_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
             redirectUri: https://gac-academic.web.app//callback
