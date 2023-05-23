@@ -13,15 +13,14 @@ server:
 spring:
   data:
     mongodb:
-      uri: ${MONGO_URI}
-    mongo:
-      database: RateMyProfessor
+      uri: mongodb+srv://lamnemchua:lamnemchua@cluster1.ehhugcv.mongodb.net/?retryWrites=true&w=majority
+      database: GAC_Academics
 
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
-            redirectUri: https://gac-academic.web.app/callback
+            client-id: 464116066266-o4llc9tracimt8hoe50ijvsic1el6iu0.apps.googleusercontent.com
+            client-secret: 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
+            redirectUri: http://localhost:4200/callback
