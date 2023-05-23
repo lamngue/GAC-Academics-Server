@@ -1,6 +1,6 @@
 server:
   forward-headers-strategy: FRAMEWORK
-  port: ${PORT}
+  port: ${PORT:8080}
 
 spring:
   data:
